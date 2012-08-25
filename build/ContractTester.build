@@ -1,0 +1,200 @@
+﻿<?xml version="1.0"?>
+<project name="ContractTester" default="build" basedir=".." xmlns="http://nant.sf.net/schemas/nant.xsd">
+
+	<description>Builds the Contract Tester</description>
+
+	<!-- properties -->
+	<property name="internal.debug" overwrite="false" value="false" />
+	<property name="nant.verbosity" overwrite="false" value="false" />
+
+	<!--=======================================-->
+	<!-- Main Targets                          -->
+	<!--=======================================-->
+
+	<target name="build" depends="InitialiseProperties, InitialiseEnvironment, BuildApplication, PublishAssemblies, RunUnitTests" description="">
+		<echo message="All Done - Live Long and Prosper!"/>
+	</target>
+
+
+	<!--=======================================-->
+	<!-- Target: InitialiseProperties          -->
+	<!--=======================================-->
+
+	<target name="InitialiseProperties" description="Initialises build properties">
+
+		<property name="build.configuration"        overwrite="false"   value="Debug" />
+		<property name="build.platform"             overwrite="false"   value="Any CPU" />
+		<property name="build.platform.nospaces"    overwrite="false"   value="${string::replace(build.platform, ' ', '')}" />
+		<property name="build.target.framework"     overwrite="false"   value="4.0" />
+		<property name="build.version"              overwrite="false"   value="0.01.000" />
+		<property name="isReleaseBuild"             overwrite="false"   value="${string::to-lower(build.configuration) == 'release'}" />
+
+		<!-- common path properties -->
+		<property name="source.dir"                 readonly="true"     value="${path::combine(project::get-base-directory(), 'app')}" />
+		<property name="build.dir"                  readonly="true"     value="${path::combine(project::get-base-directory(), 'build')}" />
+		<property name="tests.dir"                  readonly="true"     value="${path::combine(project::get-base-directory(), 'app')}" />
+		<property name="tools.dir"                  readonly="true"     value="${path::combine(project::get-base-directory(), 'tools')}" />
+		<property name="library.dir"                readonly="true"     value="${path::combine(project::get-base-directory(), 'lib')}" />
+		<property name="documentation.dir"          readonly="true"     value="${path::combine(project::get-base-directory(), 'docs')}" />
+		<property name="script.dir"                 readonly="true"     value="${path::get-directory-name(project::get-buildfile-path())}" />
+		<property name="solution.dir"               readonly="true"     value="${project::get-base-directory()}" />
+		<property name="build.working.dir"          readonly="true"     value="${path::combine(build.dir, build.platform.nospaces + '_' + build.configuration)}" />
+		<property name="binfiles.dir"               readonly="true"     value="${path::combine(build.working.dir, 'bin')}" />
+		<property name="publish.dir"                readonly="true"     value="${path::combine(build.working.dir, 'publish')}" />
+		<property name="reports.dir"                readonly="true"     value="${path::combine(build.working.dir, 'reports')}" />
+
+		<property name="solution.name"              overwrite="false"   value="${project::get-name()}" />
+		<property name="solution.file"              overwrite="false"   value="${path::combine(solution.dir, solution.name + '.sln')}" />
+		<property name="solution.primary.project"   overwrite="false"   value="${solution.name}.UnitTests" />
+		<property name="solution.output.dir"        overwrite="false"   value="${path::combine(source.dir, path::combine(solution.primary.project, path::combine('bin', build.configuration)))}" />
+
+		<!-- common assembly info properties -->
+		<property name="assembly.company"           readonly="true"     value="" />
+		<property name="assembly.copyright"         readonly="true"     value="" />
+		<property name="assembly.trademark"         readonly="true"     value="" />
+		<property name="assembly.culture"           readonly="true"     value="" />
+		<property name="assembly.version"           readonly="true"     value="${build.version}" />
+		<property name="assembly.fileversion"       readonly="true"     value="${assembly.version}" />
+		<property name="assembly.infoversion"       readonly="true"     value="${assembly.version}" />
+
+		<!-- additional utilities -->
+		<!-- NAntContrib - http://nantcontrib.sourceforge.net/ -->
+		<property name="nant.contrib.assembly"      readonly="true"     value="${path::combine(tools.dir, path::combine('NAntContrib', path::combine('bin', 'NAnt.Contrib.Tasks.dll')))}" />
+		<!-- NauckIT.NAnt - http://dev.nauck-it.de/projects/utilities/wiki/NAnt -->
+		<property name="nauckit.nant.assembly"      readonly="true"     value="${path::combine(tools.dir, path::combine('NauckIT.NAnt', 'NauckIT.NAnt.dll'))}" />
+		<!-- NUnit - http://www.nunit.org -->
+		<property name="nunit.executable"           readonly="true"     value="${path::combine(tools.dir, path::combine('NUnit', 'nunit-console-x86.exe'))}" />
+		<!-- ILMerge -->
+		<property name="ilmerge.executable"         readonly="true"     value="${path::combine(tools.dir, path::combine('bin', 'ilmerge.exe'))}" />
+
+		<!-- Framework Support
+		http://nant.sourceforge.net/faq.html#framework-support
+		-->
+		<property name="nant.settings.currentframework" value="${framework::get-family(nant.settings.currentframework)}-${build.target.framework}" />
+
+		<if test="${not internal.debug}">
+			<echo message="Configuration : ${build.configuration} | ${build.platform}" />
+			<echo message="      Version : ${build.version}" />
+		</if>
+
+		<if test="${internal.debug}">
+			<script language="C#">
+				<references>
+					<include name="System.dll" />
+				</references>
+				<code>
+					<![CDATA[
+						public static void ScriptMain(Project project)
+						{
+							System.Collections.Generic.SortedDictionary<string, string> sortedByKey = new System.Collections.Generic.SortedDictionary<string, string>();
+							foreach(DictionaryEntry de in project.Properties)
+							{
+								sortedByKey.Add(de.Key.ToString(), de.Value.ToString());
+							}
+							NAnt.Core.Tasks.EchoTask echo = new NAnt.Core.Tasks.EchoTask();
+							echo.Project = project;
+							foreach(System.Collections.Generic.KeyValuePair<string, string> kvp in sortedByKey)
+							{
+								if(kvp.Key.StartsWith("nant."))
+								{
+									continue;
+								}
+								echo.Message = String.Format("{0,23} : {1}", kvp.Key, kvp.Value);
+								echo.Execute();
+							}
+						}
+					]]>
+				</code>
+			</script>
+		</if>
+
+	</target>
+
+	<!--=======================================-->
+	<!-- Target: InitialiseEnvironment         -->
+	<!--=======================================-->
+
+	<target name="InitialiseEnvironment" depends="InitialiseProperties" description="Initial compilation setup">
+
+		<mkdir dir="${build.working.dir}" unless="${directory::exists(build.working.dir)}" verbose="${nant.verbosity}" />
+		<mkdir dir="${reports.dir}" unless="${directory::exists(reports.dir)}" verbose="${nant.verbosity}" />
+		<mkdir dir="${binfiles.dir}" unless="${directory::exists(binfiles.dir)}" verbose="${nant.verbosity}" />
+		<mkdir dir="${publish.dir}" unless="${directory::exists(publish.dir)}" verbose="${nant.verbosity}" />
+
+	</target>
+
+	<!--=======================================-->
+	<!-- Target: BuildApplication              -->
+	<!--=======================================-->
+
+	<target name="BuildApplication" depends="InitialiseProperties, InitialiseEnvironment" description="Compilation of the build project">
+		<loadtasks assembly="${nauckit.nant.assembly}" />
+
+		<property name="build.log" value="${path::combine(build.working.dir, 'msbuild.log')}" />
+
+		<echo message="Build configuration: ${build.configuration}|${build.platform}" />
+
+		<msbuild projectFile="${solution.file}" targets="Build" verbosity="Quiet">
+			<property name="Configuration" value="${build.configuration}" />
+			<property name="Platform" value="${build.platform}" />
+			<arg value="/flp:NoSummary;Verbosity=normal;LogFile=${build.log}" />
+		</msbuild>
+
+	</target>
+
+	<!--=======================================-->
+	<!-- Target: RunUnitTests                  -->
+	<!--=======================================-->
+
+	<target name="RunUnitTests" depends="BuildApplication" description="Runs unit tests">
+
+		<property name="unittest.project" value="${solution.name}.UnitTests" />
+		<property name="unittest.dir" value="${path::combine(tests.dir, path::combine(unittest.project, path::combine('bin', build.configuration)))}" />
+		<property name="unittest.reports.dir" value="${path::combine(reports.dir, 'unittests')}" readonly="true" />
+
+		<mkdir dir="${unittest.reports.dir}" unless="${directory::exists(unittest.reports.dir)}" verbose="${nant.verbosity}" />
+
+		<echo message="Running Unit Tests" />
+		<exec program="${nunit.executable}" workingdir="${unittest.dir}" failonerror="true" verbose="${nant.verbosity}">
+			<arg value="${path::combine(unittest.dir, unittest.project + '.dll')}" />
+			<arg value="/exclude=&quot;DB Tests&quot;" unless="${isReleaseBuild}" />
+			<arg value="/xml=${path::combine(unittest.reports.dir, unittest.project + '.dll-results.xml')}" />
+			<arg value="/nologo" />
+			<arg value="/nodots" />
+		</exec>
+
+	</target>
+
+	<!--=======================================-->
+	<!-- Target: PublishAssemblies             -->
+	<!--=======================================-->
+
+	<target name="PublishAssemblies" depends="BuildApplication" description="Merges assemblies and moves to publish folder">
+
+		<property name="ilmerge.log" value="${path::combine(build.working.dir, 'ilmerge.log')}" />
+		<property name="ilmerge.contracts.log" value="${path::combine(build.working.dir, 'ilmerge_contracts.log')}" />
+		<property name="ilmerge.primary.project" value="${solution.name}.Core" />
+
+		<!-- Copy files to bin folder -->
+
+		<echo message="Copying files for processing" />
+
+		<copy todir="${binfiles.dir}" flatten="true" verbose="${nant.verbosity}">
+			<fileset basedir="${source.dir}">
+				<include name="${path::combine(solution.output.dir, '*.dll')}" />
+				<include name="${path::combine(solution.output.dir, '*.pdb')}" />
+				<include name="${path::combine(solution.output.dir, solution.name + '*.xml')}" />
+				<exclude name="${path::combine(solution.output.dir, solution.name + '.UnitTests.*')}" />
+				<include name="**/bin/**/CodeContracts/**/*.dll" />
+				<include name="**/bin/**/CodeContracts/**/*.pdb" />
+				<include name="${path::combine(library.dir, 'AirNewZealand.CodeContracts.*')}" />
+			</fileset>
+		</copy>
+
+		<!-- Merge and publish main assemblies -->
+
+		<echo message="Merging and publishing assemblies" />
+
+	</target>
+
+</project>
