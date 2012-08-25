@@ -112,6 +112,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisShouldWork.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseLibrary.Common\BaseLibrary.Common.csproj">
+      <Project>{375506A1-1114-40F8-B908-1ADE2664D96D}</Project>
+      <Name>BaseLibrary.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

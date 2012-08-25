@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{114DA896-10A2-4C87-B4FA-60568845AFCA}</ProjectGuid>
+    <ProjectGuid>{375506A1-1114-40F8-B908-1ADE2664D96D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BaseLibrary.Unittests</RootNamespace>
-    <AssemblyName>BaseLibrary.Unittests</AssemblyName>
+    <RootNamespace>BaseLibrary.Common</RootNamespace>
+    <AssemblyName>BaseLibrary.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
@@ -53,7 +53,7 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -63,6 +63,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
     <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
@@ -93,17 +94,10 @@
     <CodeContractsBaseLineFile />
     <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
-    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
-    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AirNewZealand.CodeContracts">
-      <HintPath>..\..\lib\AirNewZealand.CodeContracts.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -113,25 +107,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoringDontLookHereTests.cs" />
-    <Compile Include="BangTests.cs" />
-    <Compile Include="IAmSoSillyTests.cs" />
+    <Compile Include="Bang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThisShouldWorkTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BaseLibrary.Common\BaseLibrary.Common.csproj">
-      <Project>{375506A1-1114-40F8-B908-1ADE2664D96D}</Project>
-      <Name>BaseLibrary.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BaseLibrary.Core\BaseLibrary.Core.csproj">
-      <Project>{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}</Project>
-      <Name>BaseLibrary.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BaseLibrary.ToMerge\BaseLibrary.ToMerge.csproj">
-      <Project>{E147F7FC-E52E-4584-95EA-D21C767944D9}</Project>
-      <Name>BaseLibrary.ToMerge</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

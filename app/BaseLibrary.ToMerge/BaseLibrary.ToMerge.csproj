@@ -110,6 +110,16 @@
     <Compile Include="BoringDontLookHere.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseLibrary.Common\BaseLibrary.Common.csproj">
+      <Project>{375506A1-1114-40F8-B908-1ADE2664D96D}</Project>
+      <Name>BaseLibrary.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BaseLibrary.Core\BaseLibrary.Core.csproj">
+      <Project>{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}</Project>
+      <Name>BaseLibrary.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
