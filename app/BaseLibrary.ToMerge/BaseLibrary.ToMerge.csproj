@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}</ProjectGuid>
+    <ProjectGuid>{E147F7FC-E52E-4584-95EA-D21C767944D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BaseLibrary</RootNamespace>
-    <AssemblyName>BaseLibrary</AssemblyName>
+    <RootNamespace>BaseLibrary.ToMerge</RootNamespace>
+    <AssemblyName>BaseLibrary.ToMerge</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
@@ -107,10 +107,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAmSoSilly.cs" />
-    <Compile Include="IAmSoSillyContract.cs" />
+    <Compile Include="BoringDontLookHere.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThisShouldWork.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

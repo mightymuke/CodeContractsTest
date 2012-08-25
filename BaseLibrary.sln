@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "app\BaseLibrary\BaseLibrary.csproj", "{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "app\BaseLibrary.Core\BaseLibrary.Core.csproj", "{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseProjectToMerge", "app\BaseProjectToMerge\BaseProjectToMerge.csproj", "{E147F7FC-E52E-4584-95EA-D21C767944D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseProjectToMerge", "app\BaseLibrary.ToMerge\BaseLibrary.ToMerge.csproj", "{E147F7FC-E52E-4584-95EA-D21C767944D9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary.Unittests", "app\BaseLibrary.Unittests\BaseLibrary.Unittests.csproj", "{114DA896-10A2-4C87-B4FA-60568845AFCA}"
 EndProject

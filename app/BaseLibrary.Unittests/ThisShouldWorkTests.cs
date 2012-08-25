@@ -2,6 +2,8 @@
 {
     using System;
 
+    using BaseLibrary.Core;
+
     using NUnit.Framework;
 
     [TestFixture]

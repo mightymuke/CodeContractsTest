@@ -1,4 +1,4 @@
-﻿namespace BaseLibrary
+﻿namespace BaseLibrary.Core
 {
     using System.Diagnostics.Contracts;
 

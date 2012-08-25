@@ -2,7 +2,7 @@
 {
     using System;
 
-    using BaseProjectToMerge;
+    using BaseLibrary.ToMerge;
 
     using NUnit.Framework;
 

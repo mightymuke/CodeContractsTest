@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BaseLibrary")]
+[assembly: AssemblyTitle("BaseLibrary.ToMerge")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Air New Zealand Limited")]
-[assembly: AssemblyProduct("BaseLibrary")]
+[assembly: AssemblyProduct("BaseLibrary.ToMerge")]
 [assembly: AssemblyCopyright("Copyright © Air New Zealand Limited 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cf23aa80-360b-4d41-8a38-3fc7d6ee265c")]
+[assembly: Guid("25e96a79-f084-41f3-bc09-326a0c457003")]
 
 // Version information for an assembly consists of the following four values:
 //

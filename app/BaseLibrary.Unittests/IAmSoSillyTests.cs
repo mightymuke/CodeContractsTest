@@ -2,6 +2,8 @@
 
 namespace BaseLibrary.Unittests
 {
+    using BaseLibrary.Core;
+
     using NUnit.Framework;
 
     [TestFixture]

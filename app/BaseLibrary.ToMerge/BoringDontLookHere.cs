@@ -1,4 +1,4 @@
-﻿namespace BaseProjectToMerge
+﻿namespace BaseLibrary.ToMerge
 {
     public class BoringDontLookHere
     {
