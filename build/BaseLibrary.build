@@ -211,7 +211,7 @@
 
 		<property name="ilmerge.log" value="${path::combine(build.working.dir, 'ilmerge.log')}" />
 		<property name="ilmerge.contracts.log" value="${path::combine(build.working.dir, 'ilmerge_contracts.log')}" />
-		<property name="ilmerge.primary.project" value="${solution.name}.Core" />
+		<property name="ilmerge.primary.project" value="${solution.name}.Common" />
 
 		<!-- Copy files to bin folder -->
 
