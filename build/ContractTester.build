@@ -161,6 +161,7 @@
 			<arg value="/xml=${path::combine(unittest.reports.dir, unittest.project + '.dll-results.xml')}" />
 			<arg value="/nologo" />
 			<arg value="/nodots" />
+			<arg value="/labels" />
 		</exec>
 
 	</target>

@@ -116,7 +116,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmSoSillyAndFunnyTests.cs" />
+    <Compile Include="AmSoSillyTests.cs" />
+    <Compile Include="BangBangTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisShouldStillWorkTests.cs" />
   </ItemGroup>

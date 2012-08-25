@@ -5,13 +5,13 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class AmSoSillyAndFunnyTests
+    public class AmSoSillyTests
     {
         [Test]
         public void Add_NullEntity_ThrowsException()
         {
             // Arrange
-            var wai = new AmSoSillyAndFunny();
+            var wai = new AmSoSilly();
 
             // Act
 
@@ -26,7 +26,7 @@
         public void Delete_NullEntity_ThrowsException()
         {
             // Arrange
-            var wai = new AmSoSillyAndFunny();
+            var wai = new AmSoSilly();
 
             // Act
 

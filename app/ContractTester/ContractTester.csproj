@@ -110,8 +110,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmSoSillyAndFunny.cs" />
-    <Compile Include="AmSoFunny.cs" />
+    <Compile Include="AmSoSilly.cs" />
+    <Compile Include="BangBang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThisShouldStillWork.cs" />
   </ItemGroup>

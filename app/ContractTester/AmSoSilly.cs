@@ -4,7 +4,7 @@
 
     using BaseLibrary.Core;
 
-    public class AmSoSillyAndFunny : AmSoFunny, IAmSoSillyAndFunny
+    public class AmSoSilly : IAmSoSilly
     {
         #region Implementation of IAmSoSilly
 
