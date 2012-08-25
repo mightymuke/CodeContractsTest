@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "app\BaseLibrary\BaseLibrary.csproj", "{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseProjectToMerge", "app\BaseProjectToMerge\BaseProjectToMerge.csproj", "{E147F7FC-E52E-4584-95EA-D21C767944D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary.Unittests", "app\BaseLibrary.Unittests\BaseLibrary.Unittests.csproj", "{114DA896-10A2-4C87-B4FA-60568845AFCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E147F7FC-E52E-4584-95EA-D21C767944D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E147F7FC-E52E-4584-95EA-D21C767944D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E147F7FC-E52E-4584-95EA-D21C767944D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E147F7FC-E52E-4584-95EA-D21C767944D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114DA896-10A2-4C87-B4FA-60568845AFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114DA896-10A2-4C87-B4FA-60568845AFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114DA896-10A2-4C87-B4FA-60568845AFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114DA896-10A2-4C87-B4FA-60568845AFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
