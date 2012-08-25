@@ -113,7 +113,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoringDontLookHereTests.cs" />
     <Compile Include="BangTests.cs" />
     <Compile Include="IAmSoSillyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,10 +126,6 @@
     <ProjectReference Include="..\BaseLibrary.Core\BaseLibrary.Core.csproj">
       <Project>{4C4FD4A4-0CD8-42E3-97F6-33C9BD711B55}</Project>
       <Name>BaseLibrary.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BaseLibrary.ToMerge\BaseLibrary.ToMerge.csproj">
-      <Project>{E147F7FC-E52E-4584-95EA-D21C767944D9}</Project>
-      <Name>BaseLibrary.ToMerge</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
