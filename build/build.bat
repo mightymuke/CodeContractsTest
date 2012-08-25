@@ -1,1 +1,1 @@
-@..\tools\nant\nant.exe -buildfile:CodeContractsTest.build %*
+@..\tools\nant\nant.exe -buildfile:BaseLibrary.build %*
